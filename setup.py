@@ -41,4 +41,5 @@ setup(
         'Bug Reports': 'https://github.com/reud/PyLineNotify/issues',
         'Source': 'https://github.com/reud/PyLineNotify',
     },
+    packages=find_packages(),
 )
