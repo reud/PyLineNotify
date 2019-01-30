@@ -25,8 +25,8 @@ see requirements.txt
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+MIT
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[reud](https://github.com/reud)
