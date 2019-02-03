@@ -17,7 +17,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pylinenotify',
-    version='1.0.4',
+    version='1.1.1',
     description='using LineNotify more easily',
     url='https://github.com/reud/PyLineNotify',
     author='reud',
