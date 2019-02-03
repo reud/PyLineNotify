@@ -39,8 +39,8 @@ pylinenotify.send_message(token='YOUR_LINENOTIFY_TOKEN',message='Hello World!')
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+MIT
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[reud](https://github.com/reud)
