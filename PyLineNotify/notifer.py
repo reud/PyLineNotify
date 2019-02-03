@@ -1,47 +1,100 @@
 # coding:UTF-8
-import os
 import requests
 
-class Notifer(object):
+URL = 'https://notify-api.line.me/api/notify'
+
+
+class Notifer ( object ):
     """
     Notifer Object
     :member notify_token:
     """
-    def __init__(self,notify_token):
+
+    def __init__( self, notify_token: str ):
         """
         __init__
         :param notify_token:
         Your LineNotify Acess Token
 
         """
-        self.notify_token=notify_token
+        self.notify_token = notify_token
 
-    def send_message( self,string):
+    def send_message( self, message: str ) -> str:
         """
         A function that notifies LINENotify of the character string given as an argument
-        :param string:
+
+        :param message:
             A string to be notified
+
         :return response:
+            server response (thats like 200 etc...)
         """
-        url = 'https://notify-api.line.me/api/notify'
-        header = {'Authorization': 'Bearer ' + self.notify_token}
-        payload = {'message': string}
-        res = requests.post ( url, data=payload, headers=header )
+        headers = {'Authorization': 'Bearer ' + self.notify_token}
+        payload = {'message': message}
+        res = requests.post ( URL, data=payload, headers=headers )
         return str ( res )
 
-def send_message(token,string):
+    def send_sticker( self, sticker_package_id: str, sticker_id: str ) -> str:
+        """
+        if you want to know what i can use, you will see https://devdocs.line.me/files/sticker_list.pdf
+        :param sticker_package_id:
+        :param sticker_id:
+        :return response:
+            server response (thats like 200 etc...)
+        """
+
+        payload = {'stickerPackageId': sticker_package_id, 'stickerId': sticker_id}
+        headers = {'Authorization': 'Bearer ' + self.notify_token}  # 発行したトークン
+        res = requests.post ( URL, data=payload, headers=headers )
+        return str ( res )
+
+    def send_photo_with_message( self, path: str, message: str ) -> str:
+        payload = {"message": message}
+        headers = {"Authorization": "Bearer " + self.notify_token}
+        files = {"imageFile": open ( path, "rb" )}
+        res = requests.post ( URL, data=payload, headers=headers, files=files )
+        return str ( res )
+
+
+def send_message( token, message: str ) -> str:
     """
     A function that notifies LINENotify of the character string given as an argument
-    :param string:
+    :param message:
         A string to be notified
     :param token:
-        LineNotifyToken
+        LineNotify Access Token
     :return response:
+        server response (thats like 200 etc...)
     """
-    url = 'https://notify-api.line.me/api/notify'
-    header = {'Authorization': 'Bearer ' + token}
-    payload = {'message': string}
-    res = requests.post ( url, data=payload, headers=header )
-    return str ( res )
+    notify = Notifer ( token )
+    return notify.send_message ( message )
 
 
+def send_sticker( token, sticker_package_id: str, sticker_id: str ) -> str:
+    """
+    if you want to know what i can use, you will see https://devdocs.line.me/files/sticker_list.pdf
+    :param token:
+        LineNotify Access Token
+    :param sticker_package_id:
+    :param sticker_id:
+    :return response:
+        server response (thats like 200 etc...)
+    """
+    notify = Notifer ( token )
+    return notify.send_sticker ( sticker_package_id, sticker_id )
+
+
+def send_photo_with_message( token: str, path: str, message: str ) -> str:
+    """
+    You can send .png .jpg type message.
+    Notice: You have to write message.
+    :param token:
+        LineNotify Access Token
+    :param path:
+        File pass (relative)
+    :param message:
+    :return response:
+        server response (thats like 200 etc...)
+    """
+    notify = Notifer ( token )
+    return notify.send_photo_with_message ( path, message )

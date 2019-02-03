@@ -17,12 +17,12 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pylinenotify',
-    version='1.0.2',
+    version='1.0.4',
     description='using LineNotify more easily',
     url='https://github.com/reud/PyLineNotify',
     author='reud',
     author_email='mail@reud.net',
-    license='',
+    license='MIT',
     install_requires=['requests'],
     keywords='LineNotify',
     classifiers=[
@@ -30,9 +30,6 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
