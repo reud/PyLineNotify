@@ -6,33 +6,42 @@ if you want to see README in English,  Click it !
 
 ## Description
 
-LineNotifyでのPOSTをアシストします。
+LINENotifyでLINEに通知を送る際に必要なリクエストを簡略化し、簡単にLINENotifyを使いこなす事が出来る様になります。
 
 ## Demo
 
 
 
-## VS. 
-
 ## Requirement
+
 Python 3.5~
+
 使用している他ライブラリについては
-requirements.txt を確認してください。
+[requirements.txt](https://github.com/reud/PyLineNotify/blob/master/requirements.txt) を確認してください。
 
 ## Usage
 LINENotifyを簡単に使う事が出来るようになります！
 
-LINENotifyを使用する際、アクセストークンが必要なのですが、こちらから取得できます。
+LINENotifyを使用する際、アクセストークンが必要なのですが、
 
-以下のコードはHello WorldとLINENotifyで通知させるコードです。
-```python
-import pylinenotify
+[こちら](https://notify-bot.line.me/ja/)から取得できます。
 
-pylinenotify.send_message(token='YOUR_LINENOTIFY_TOKEN',message='Hello World!')
+以下のコードは'Hello World!'とLINENotifyで通知させるコードです。
+
+
+```Python
+import PyLineNotify
+
+TOKEN = 'YOUR_ACCESS_TOKEN'
+
+PyLineNotify.send_message(token=TOKEN,message='Hello World!')
+
+# same as PyLineNotify.send_sticker(TOKEN, 'Hello World!')
 
 ```
 
 これを実行すると以下のようにLINENotifyから通知が来ます。
+
 ## Install
 
 ```Terminal

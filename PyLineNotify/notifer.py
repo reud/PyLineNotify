@@ -81,7 +81,7 @@ def send_message(token, message: str) -> str:
     return notify.send_message(message)
 
 
-def send_sticker(token, message: str, sticker_package_id: str, sticker_id: str) -> str:
+def send_sticker_with_message(token, message: str, sticker_package_id: str, sticker_id: str) -> str:
     """
     if you want to know what i can use, you will see https://devdocs.line.me/files/sticker_list.pdf
 
