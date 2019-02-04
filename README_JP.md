@@ -18,9 +18,8 @@ Python 3.5~
 [requirements.txt](https://github.com/reud/PyLineNotify/blob/master/requirements.txt) を確認してください。
 
 ## Usage
-LINENotifyを簡単に使う事が出来るようになります！
 
-LINENotifyを使用する際、アクセストークンが必要なのですが、
+注意:LINENotifyを使用する際、アクセストークンが必要なのですが、
 
 [こちら](https://notify-bot.line.me/ja/)から取得できます。
 
@@ -113,7 +112,7 @@ $ pip install pylinenotify
 
 ## Licence
 
-[MIT](https://github.com/reud/MIT_LICENSE)
+[MIT](https://github.com/reud/MIT_LICENSE/blob/master/LICENSE)
 
 ## Author
 
