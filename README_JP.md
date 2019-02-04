@@ -23,6 +23,10 @@ Python 3.5~
 
 [こちら](https://notify-bot.line.me/ja/)から取得できます。
 
+右上のログインからLINEにログインした後、再度右上をクリックしMy Pageを選択、ページ下部の
+Generate access token (For developers)　の　Generate tokenをクリック、あとはアプリ名を付けて、
+LINENotifyを使用するルームを選んでGenerate tokenで表示されます。
+
 以下のコードは'Hello World!'とLINENotifyで通知させるコードです。
 
 
