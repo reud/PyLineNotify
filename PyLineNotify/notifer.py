@@ -8,6 +8,7 @@ class Notifer(object):
     """
     Notifer Object
     :member notify_token:
+    :member headers:
     """
 
     def __init__(self, notify_token: str):
@@ -18,6 +19,7 @@ class Notifer(object):
 
         """
         self.notify_token = notify_token
+        self.headers={'Authorization': 'Bearer ' + self.notify_token}
 
     def send_message(self, message: str) -> str:
         """
@@ -29,9 +31,8 @@ class Notifer(object):
         :return response:
             server response (thats like 200 etc...)
         """
-        headers = {'Authorization': 'Bearer ' + self.notify_token}
         payload = {'message': message}
-        res = requests.post(URL, data=payload, headers=headers)
+        res = requests.post(URL, data=payload, headers=self.headers)
         return str(res)
 
     def send_sticker_with_message(self, message: str, sticker_package_id: str, sticker_id: str) -> str:
@@ -46,8 +47,7 @@ class Notifer(object):
         """
 
         payload = {'message': message, 'stickerPackageId': sticker_package_id, 'stickerId': sticker_id}
-        headers = {'Authorization': 'Bearer ' + self.notify_token}  # 発行したトークン
-        res = requests.post(URL, data=payload, headers=headers)
+        res = requests.post(URL, data=payload, headers=self.headers)
         return str(res)
 
     def send_photo_with_message(self, message: str, path: str) -> str:
@@ -61,9 +61,8 @@ class Notifer(object):
             server response (thats like 200 etc...)
         """
         payload = {"message": message}
-        headers = {"Authorization": "Bearer " + self.notify_token}
         files = {"imageFile": open(path, "rb")}
-        res = requests.post(URL, data=payload, headers=headers, files=files)
+        res = requests.post(URL, data=payload, headers=self.headers, files=files)
         return str(res)
 
 

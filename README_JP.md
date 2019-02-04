@@ -2,14 +2,12 @@ PyLineNotify
 ====
 
 Pythonで簡単にLineNotifyを操作するライブラリ。
-if you want to see README in English,  Click it !
+
+if you want to see README in English,  Check [README.md](https://github.com/reud/PyLineNotify/blob/master/README.md) !
 
 ## Description
 
 LINENotifyでLINEに通知を送る際に必要なリクエストを簡略化し、簡単にLINENotifyを使いこなす事が出来る様になります。
-
-## Demo
-
 
 
 ## Requirement
@@ -42,17 +40,80 @@ PyLineNotify.send_message(token=TOKEN,message='Hello World!')
 
 これを実行すると以下のようにLINENotifyから通知が来ます。
 
+
+![messageサンプル](https://github.com/reud/PyLineNotify/blob/master/samples/message.PNG)
+
+画像を送信することもできます。(LINENotifyの仕様上、メッセージを同梱して送信する必要があります)
+
+以下のコードは同ディレクトリにあるmiku.jpgを送信するコードです。
+
+```python
+import PyLineNotify
+
+TOKEN = 'YOUR_ACCESS_TOKEN'
+
+PyLineNotify.send_photo_with_message(token=TOKEN, message='Hatune Miku', path='miku.jpg')
+
+# same as PyLineNotify.send_photo_with_message(TOKEN,'Hatune Miku','miku.jpg')
+
+```
+
+これを実行すると以下のようにLINENotifyから通知が来ます。
+
+![photoサンプル](https://github.com/reud/PyLineNotify/blob/master/samples/photo.PNG)
+
+スタンプも送信する事ができます。(LINENotifyの仕様上、メッセージを同梱して送信する必要があります)
+
+[ここ](https://devdocs.line.me/files/sticker_list.pdf) にあるスタンプを使用する事ができます。
+上記のPDFのSTKIDがsticker_id、STKPKGIDがsticker_package_idに対応します。
+
+以下はスタンプを送るサンプルコードです。
+
+```python
+import PyLineNotify
+
+TOKEN = 'YOUR_ACCESS_TOKEN'
+
+PyLineNotify.send_sticker_with_message(token=TOKEN, message='Hello World', sticker_package_id='1', sticker_id='1')
+
+# same as PyLineNotify.send_sticker(TOKEN, 'Hello World', 1, 1)
+
+```
+
+これを実行すると以下のようにLINENotifyから通知が来ます。
+
+![stickerサンプル](https://github.com/reud/PyLineNotify/blob/master/samples/sticker.PNG)
+
+
+####一々引数にTOKENを指定するのがめんどくさい人のために、独自クラスも作成してあります。
+
+以下のコードはNotifer型オブジェクトを作成して上記の三つのコードと同じ動作をまとめて実行しています。
+
+```python
+import PyLineNotify
+
+TOKEN = 'YOUR_ACCESS_TOKEN'
+
+notifer=PyLineNotify.Notifer(TOKEN)
+
+notifer.send_message('Hello World!')
+
+notifer.send_photo_with_message('Hello Hatune Miku!','miku.jpg')
+
+notifer.send_sticker_with_message('Hello World', 1, 1)
+```
+このようにオブジェクトを作成すれば一々引数にaccess_tokenを入れる必要がなくなります。
+
 ## Install
 
 ```Terminal
 $ pip install pylinenotify
 ```
 
-## Contribution
 
 ## Licence
 
-[reud](https://github.com/reud/MIT_LICENSE)
+[MIT](https://github.com/reud/MIT_LICENSE)
 
 ## Author
 
