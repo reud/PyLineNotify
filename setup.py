@@ -17,14 +17,14 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='pylinenotify',
-    version='1.1.3',
+    version='1.1.5',
     description='using LineNotify more easily',
     url='https://github.com/reud/PyLineNotify',
     author='reud',
     author_email='mail@reud.net',
     license='MIT',
     install_requires=['requests'],
-    keywords='LineNotify',
+    keywords='LINENotify',
     classifiers=[
         'License :: OSI Approved :: MIT License',
 

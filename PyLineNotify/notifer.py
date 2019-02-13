@@ -19,7 +19,7 @@ class Notifer(object):
 
         """
         self.notify_token = notify_token
-        self.headers={'Authorization': 'Bearer ' + self.notify_token}
+        self.headers = {'Authorization': 'Bearer ' + self.notify_token}
 
     def send_message(self, message: str) -> str:
         """
@@ -32,7 +32,10 @@ class Notifer(object):
             server response (thats like 200 etc...)
         """
         payload = {'message': message}
+        if message == '':
+            raise ValueError('LINENotify needs message, not empty.')
         res = requests.post(URL, data=payload, headers=self.headers)
+
         return str(res)
 
     def send_sticker_with_message(self, message: str, sticker_package_id: str, sticker_id: str) -> str:
@@ -47,6 +50,9 @@ class Notifer(object):
         """
 
         payload = {'message': message, 'stickerPackageId': sticker_package_id, 'stickerId': sticker_id}
+
+        if message == '':
+            raise ValueError('LINENotify needs message, not empty.')
         res = requests.post(URL, data=payload, headers=self.headers)
         return str(res)
 
@@ -62,6 +68,8 @@ class Notifer(object):
         """
         payload = {"message": message}
         files = {"imageFile": open(path, "rb")}
+        if message == '':
+            raise ValueError('LINENotify needs message, not empty.')
         res = requests.post(URL, data=payload, headers=self.headers, files=files)
         return str(res)
 
