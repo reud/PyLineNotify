@@ -4,4 +4,4 @@ include *.md
 include requirements.txt
 
 # Include the data files
-recursive-include PyLineNotify *
+recursive-include pylinenotify *
